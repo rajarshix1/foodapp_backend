@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
-import { menuSchema } from "../model/newModel";
+const mongoose =require( "mongoose" );
+const  menuSchema =require("../model/newModel")
 
 const Food = mongoose.model('food', menuSchema)
 
-export const newFood = (req, res) => {
+const newFood = (req, res) => {
     let newC = new Food(req.body)
     newC.save((err, success)=>{
         if (err) {
@@ -14,7 +14,7 @@ export const newFood = (req, res) => {
         }
     })
 }
-export const getAllFoods = (req, res) => {
+const getAllFoods = (req, res) => {
     Food.find({}, (err, success)=>{
         if (err) {
             res.send(err)
@@ -25,7 +25,7 @@ export const getAllFoods = (req, res) => {
     })
     
 }
-export const getFoodbyId = (req, res) => {
+const getFoodbyId = (req, res) => {
     console.log(req.params.foodId);
     Food.findById(req.params.foodId, (err, success)=>{
         if (err) {
@@ -37,7 +37,7 @@ export const getFoodbyId = (req, res) => {
     })
     
 }
-export const updateFood= (req, res) => {
+const updateFood= (req, res) => {
     console.log(req.params.foodId);
     const id = req.body.foodId
     const updatedInfo = req.body
@@ -52,7 +52,7 @@ export const updateFood= (req, res) => {
     })
     
 }
-export const deleteFood= (req, res) => {
+const deleteFood= (req, res) => {
     console.log(req.body.foodId);
     Food.remove({_id: req.body.foodId}, (err, success)=>{
         if (err) {
@@ -64,3 +64,4 @@ export const deleteFood= (req, res) => {
     })
     
 }
+module.exports={newFood, getAllFoods, getFoodbyId, updateFood, deleteFood}

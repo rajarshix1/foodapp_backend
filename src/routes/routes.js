@@ -1,4 +1,4 @@
-import { deleteFood, getAllFoods, getFoodbyId, newFood, updateFood } from "../controller/myController"
+const { deleteFood, getAllFoods, getFoodbyId, newFood, updateFood } =  require("../controller/myController")
 
 const routes = (app) =>{
     
@@ -12,4 +12,4 @@ const routes = (app) =>{
     .put(updateFood)
     .delete(deleteFood)
 }
-export default routes
+module.exports = routes

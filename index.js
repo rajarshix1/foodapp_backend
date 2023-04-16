@@ -1,15 +1,16 @@
-import bodyParser from "body-parser";
-import express from "express";
-import routes from "./src/routes/routes";
-import mongoose from "mongoose";
-import * as dotenv from 'dotenv' 
-dotenv.config()
+const bodyParser =require( "body-parser")
+const express =require( "express")
+const mongoose =require( "mongoose");
+const routes  = require("./src/routes/routes");
+const  dotenv =require( 'dotenv').config()
+var cors = require('cors')
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cors())
 //mongoose connection
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.URI, {

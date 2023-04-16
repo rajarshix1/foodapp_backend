@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+const  mongoose = require("mongoose")
+
 const Schema = mongoose.Schema
-export const menuSchema = new Schema({
+ const menuSchema = new Schema({
     name: {
         type: String,
         required: 'Enter food name'
@@ -21,3 +22,4 @@ export const menuSchema = new Schema({
         default: Date.now()
     },
 })
+module.exports= menuSchema
